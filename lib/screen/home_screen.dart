@@ -13,6 +13,8 @@ class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
   PageController _pageController;
+  final GlobalKey <ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
 
   @override
   void initState() {
@@ -24,9 +26,18 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         brightness: Brightness.light,
         backgroundColor: Colors.white,
+        leading: IconButton(
+        icon: Icon(
+        Icons.menu,
+        size: 30,
+        color: Colors.blue,
+      ),
+          onPressed: ()=>_scaffoldKey.currentState.openDrawer(),
+    ),
         title: Text(
           "MeetBook",
           style: TextStyle(
